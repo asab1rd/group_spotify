@@ -5,13 +5,15 @@ class Model extends DatabaseConn
     //All our requests to the database
     public function getAllAlbums($limit = null)
     {
-        $sql = "SELECT *, albums.name album_name
+        $sql = "SELECT *
         FROM albums";
         if ($limit !== null) {
             $sql .= " limit :lim"; // If we only want to get a certain amount of albums
         }
         $statement = $this->db->prepare($sql);
-        $statement->bindParam(":lim", $limit, PDO::PARAM_INT);
+        if ($limit !== null) {
+            $statement->bindParam(":lim", $limit, PDO::PARAM_INT); // If we only want to get a certain amount of albums
+        }
         $statement->execute();
         return $statement->fetchAll();
     }
@@ -26,7 +28,9 @@ class Model extends DatabaseConn
         }
         $statement = $this->db->prepare($sql);
         $statement->bindParam(':name', $name);
-        $statement->bindParam(':lim', $limit, PDO::PARAM_INT);
+        if ($limit !== null) {
+            $statement->bindParam(":lim", $limit, PDO::PARAM_INT); // If we only want to get a certain amount of albums
+        }
         $statement->execute();
         return $statement->fetchAll();
     }
@@ -71,7 +75,23 @@ class Model extends DatabaseConn
         }
         $statement = $this->db->prepare($sql);
         $statement->bindParam(':name', $name);
-        // $statement->bindParam(':lim', $limit, PDO::PARAM_INT);
+        if ($limit !== null) {
+            $statement->bindParam(":lim", $limit, PDO::PARAM_INT); // If we only want to get a certain amount of albums
+        }
+        $statement->execute();
+        return $statement->fetchAll();
+    }
+    public function getAllArtists(int $limit = null)
+    {
+        $sql = "SELECT *
+        FROM artists";
+        if ($limit !== null) {
+            $sql .= " limit :lim"; // If we only want to get a certain amount of albums
+        }
+        $statement = $this->db->prepare($sql);
+        if ($limit !== null) {
+            $statement->bindParam(":lim", $limit, PDO::PARAM_INT); // If we only want to get a certain amount of albums
+        }
         $statement->execute();
         return $statement->fetchAll();
     }
