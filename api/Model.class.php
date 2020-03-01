@@ -63,9 +63,10 @@ class Model extends DatabaseConn
     }
     public function getTracksByAlbum(string $albumId)
     {
-        $sql = "SELECT *
+        $sql = "SELECT tracks.name AS tracknames ,albums.name,albums.cover, tracks.id, tracks.album_id, tracks.track_no, tracks.duration, tracks.mp3 FROM tracks inner join albums on albums.id = tracks.album_id WHERE album_id = 3 ";
+        /* "SELECT *
         FROM tracks
-        WHERE album_id = album_id limit 10"; 
+        WHERE album_id = album_id limit 20";  */
         $statement = $this->db->prepare($sql);
         $statement->bindParam(':album_id', $albumId);
         $statement->execute();

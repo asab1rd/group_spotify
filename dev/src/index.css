@@ -68,3 +68,13 @@ body {
     text-align: center;
     color: white;
   }
+  .track{
+  border-style: inset;
+  padding-top: 5%;
+  }
+  .title{
+    font-size: 173%;
+  }
+  .sizesong{
+    font-size: 135%;
+  }

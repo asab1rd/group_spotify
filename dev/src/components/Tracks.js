@@ -9,11 +9,13 @@ function Tracks() {
             .then(json => settracks(json));
     }, [])
     return (
+        //tracks === null ? "chargement..." : console.log(tracks.data[0].cover),
         <div className="container">
             {tracks === null ? "chargement..." :
                 tracks.data.map(track => <div className="track">
-                    {<div className="Cover">{track.cover}</div>}
-                    <figure><figcaption>{track.name}</figcaption>
+                    <div className="title">{track.name}</div>
+                    {<div className="Cover"><img alt="cover" src={track.cover}></img></div>}
+                    <figure><figcaption className="sizesong">{track.tracknames}</figcaption>
                         <audio
                             controls
                             src={track.mp3}>
