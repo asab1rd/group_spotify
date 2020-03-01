@@ -12,13 +12,13 @@ function Tracks() {
         <div className="container">
             {tracks === null ? "chargement..." :
                 tracks.data.map(track => <div className="track">
+                    {<div className="Cover">{track.cover}</div>}
                     <figure><figcaption>{track.name}</figcaption>
                         <audio
                             controls
                             src={track.mp3}>
                         </audio>
                     </figure>
-
                 </div>
                 )}
         </div>

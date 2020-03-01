@@ -65,7 +65,7 @@ class Model extends DatabaseConn
     {
         $sql = "SELECT *
         FROM tracks
-        WHERE album_id = :album_id";
+        WHERE album_id = album_id limit 10"; 
         $statement = $this->db->prepare($sql);
         $statement->bindParam(':album_id', $albumId);
         $statement->execute();
