@@ -9,7 +9,7 @@ Make sure the DatabaseConn file informations are correct
 ### Start the server in order to run the API
 
 ```bash
-php -S localhost:8080 -t api
+phpmamp -S localhost:8080 -t api
 you can change the port ex : 8082 8083 etc
 ```
 
